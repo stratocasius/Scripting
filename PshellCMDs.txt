@@ -1,0 +1,55 @@
+#pulls ExePolicy for any remote PC.
+invoke-command -computername LT0849 -scriptblock {get-executionpolicy -list}
+
+#sets the appropiate policy needed for a remote PC.
+ invoke-command -computername LT0849 {set-executionpolicy Undefined -scope CurrentUser -force}
+
+
+
+Hi, I know this has been answered, but I feel using schtasks is overly complicated. I've found a better way and am posting it since this question is the top result in Google for the topic.
+ 
+First, you need to have a microsoft tool - psexec - http://technet.microsoft.com/en-us/sysinternals/bb897553.aspx - download and extract to where ever.
+ 
+After that run cmd.exe, and navigate to whatever folder psexec has been extracted to (ie. cd C:\[path to psexec's containing folder)
+ 
+Then run this command:
+ 
+psexec \\[computer name] -u [admin account name] -p [admin account password] powershell.exe "enable-psremoting -force"
+ 
+That's it. Twiddle your thumbs for a couple minutes - enable-psremoting can sometimes take a while and the -d modifier just lets it happen in the background on the target remote machine, then you are good to go with all your psRemoting funtimes.
+ 
+You can also replace "\\[computer name]" with an ip address, or even "@C:\[path]\list.txt to automatically enable psRemoting on a big list of computers on your network. Very fast, very easy.
+ 
+Hope this is clear enough for the less experienced because most of what turns up on Google is not very helpful for this topic.
+
+
+
+2nd test to find and Uninstall all Versions of Java
+
+$java = Get-WmiObject -Class win32_product | where { $_.Name -like "*Java*"}
+ $msiexec = "C:\Windows\system32\msiexec.exe";
+ $msiexecargs = '/x "$($app.IdentifyingNumber)" /qn /norestart'
+ 
+if ($java -ne $null)
+ {
+     foreach ($app in $java)
+     {
+         write-host $app.LocalPackage
+         write-host $app.IdentifyingNumber
+         &C:\Windows\system32\cmd.exe /c "C:\Windows\system32\msiexec.exe /x $($app.IdentifyingNumber) /qn"
+         Start-Process -FilePath $msiexec -Arg $msiexecargs -Wait -Passthru
+         [Diagnostics.Process]::Start($msiexec, $msiexecargs);
+     }
+ }
+ if ($java -ne $null)
+ {
+     foreach ($app in $java)
+     {
+         write-host $app.LocalPackage
+         write-host $app.IdentifyingNumber
+         &C:\Windows\system32\cmd.exe /c "C:\Windows\system32\msiexec.exe /x $($app.IdentifyingNumber) /qn"
+         Start-Process -FilePath $msiexec -Arg $msiexecargs -Wait -Passthru
+         [Diagnostics.Process]::Start($msiexec, $msiexecargs);
+     }
+ }
+ else { exit }

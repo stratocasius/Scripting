@@ -1,0 +1,1 @@
+powershell  -noprofile -command "& {$variable = Get-ExecutionPolicy:If((Get-ExecutionPolicy) -ne 'Unrestricted'){Set-ExecutionPolicy unrestricted -force;}; .\<YOURSCRIPTHERE>; Set-ExecutionPolicy $variable}"

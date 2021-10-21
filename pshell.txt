@@ -1,0 +1,1 @@
+Invoke-Command -ScriptBlock { Get-Process } -ComputerName localhost,LT0849 | sort pscomputername | Format-table -GroupBy pscomputername | Out-File c:\results.txt

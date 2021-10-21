@@ -1,0 +1,1 @@
+﻿Get-WmiObject -Class Win32_AddRemovePrograms | Where-Object {$_.DisplayName -like 'AppShell%'} | foreach-object -process {$_.Uninstall()}
