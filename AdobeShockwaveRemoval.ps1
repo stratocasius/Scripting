@@ -1,0 +1,1 @@
+& cmd /c C:\Windows\System32\wbem\WMIC.exe product where "name like 'Adobe Shockwave%'" call uninstall > C:\Windows\Temp\AdobeShockwave-Removal.log

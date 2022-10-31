@@ -1,0 +1,5 @@
+Get-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Office\Outlook\Settings\Data "global_onlinemeetings_enabledbydefault" | %{set-itemproperty -Path $_.PSPath "global_onlinemeetings_enabledbydefault" -Value ( $_."global_onlinemeetings_enabledbydefault" -Replace '"value":"true"', '"value":"false"')} -Verbose
+Get-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Office\Outlook\Settings\Data "global_onlinemeetings_enabledbydefault" | %{set-itemproperty -Path $_.PSPath "global_onlinemeetings_enabledbydefault" -Value ( $_."global_onlinemeetings_enabledbydefault" -Replace 'SystemDefault', 'UserOverride')} -Verbose
+### Creates path and string for detection
+New-Item -Path "HKCU:\Software\" -Name "Intune" -verbose -ErrorAction SilentlyContinue
+New-ItemProperty -Path "HKCU:\Software\Intune" -Name "Remediation_OutlookOnlineMeetings" -Type String -Value 08222022 -Verbose

@@ -1,0 +1,3 @@
+#### Outlook Online Meetings override to unchecked.
+Get-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Office\Outlook\Settings\Data "global_onlinemeetings_enabledbydefault" | %{set-itemproperty -Path $_.PSPath "global_onlinemeetings_enabledbydefault" -Value ( $_."global_onlinemeetings_enabledbydefault" -Replace '"value":"true"', '"value":"false"')} -Verbose
+Get-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Office\Outlook\Settings\Data "global_onlinemeetings_enabledbydefault" | %{set-itemproperty -Path $_.PSPath "global_onlinemeetings_enabledbydefault" -Value ( $_."global_onlinemeetings_enabledbydefault" -Replace 'SystemDefault', 'UserOverride')} -Verbose

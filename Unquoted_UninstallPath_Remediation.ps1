@@ -1,0 +1,52 @@
+$ErrorActionPreference = "SilentlyContinue"
+
+$BaseKeys = "HKLM:\System\CurrentControlSet\Services",                                  #Services
+            "HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall",                #32bit Uninstalls
+            "HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall"     #64bit Uninstalls
+#Blacklist for keys to ignore
+$BlackList = $Null
+#Create an ArrayList to store results in
+$Values = New-Object System.Collections.ArrayList
+#Discovers all registry keys under the base keys
+$DiscKeys = Get-ChildItem -Recurse -Directory $BaseKeys -Exclude $BlackList -ErrorAction SilentlyContinue |
+            Select-Object -ExpandProperty Name | %{($_.ToString().Split('\') | Select-Object -Skip 1) -join '\'}
+#Open the local registry
+$Registry = [Microsoft.Win32.RegistryKey]::OpenBaseKey('LocalMachine', 'Default')
+ForEach ($RegKey in $DiscKeys)
+{
+    #Open each key with write permissions
+    Try { $ParentKey = $Registry.OpenSubKey($RegKey, $True) }
+    Catch { Write-Debug "Unable to open $RegKey" }
+    #Test if registry key has values
+    If ($ParentKey.ValueCount -gt 0)
+    {
+        $MatchedValues = $ParentKey.GetValueNames() | ?{ $_ -eq "ImagePath" -or $_ -eq "UninstallPath" }
+        ForEach ($Match in $MatchedValues)
+        {
+            #RegEx that matches values containing .exe with a space in the exe path and no double quote encapsulation
+            $ValueRegEx = '(^(?!\u0022).*\s.*\.[Ee][Xx][Ee](?<!\u0022))(.*$)'
+            $Value = $ParentKey.GetValue($Match)
+            #Test if value matches RegEx
+            If ($Value -match $ValueRegEx)
+            {
+                $RegType = $ParentKey.GetValueKind($Match)
+                #Uses the matches from the RegEx to build a new entry encapsulating the exe path with double quotes
+                $Correction = "$([char]34)$($Matches[1])$([char]34)$($Matches[2])"
+                #Attempt to correct the entry
+                Try { $ParentKey.SetValue("$Match", "$Correction", [Microsoft.Win32.RegistryValueKind]::$RegType) }
+                Catch { Write-Debug "Unable to write to $ParentKey" }
+                #Add a hashtable containing details of corrected key to ArrayList
+                $Values.Add((New-Object PSObject -Property @{
+                "Name" = $Match
+                "Type" = $RegType
+                "Value" = $Value
+                "Correction" = $Correction
+                "ParentKey" = "HKEY_LOCAL_MACHINE\$RegKey"
+                })) | Out-Null
+            }
+        }
+    }
+    $ParentKey.Close()
+}
+$Registry.Close()
+$Values | Select-Object @{l='Timestamp';e={"$((Get-Date).ToShortDateString()) $((Get-Date).ToShortTimeString())"}},ParentKey,Value,Correction,Name,Type | export-csv C:\windows\temp\unquoted-search-pathString-changes.csv -NoTypeInformation -Append

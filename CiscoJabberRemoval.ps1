@@ -1,0 +1,2 @@
+& cmd /c C:\Windows\System32\wbem\WMIC.exe product where "name like 'Cisco Jabber%'" call uninstall > C:\Windows\Temp\CiscoJabber-Removal.log
+& cmd /c C:\windows\SysWOW64\wbem\WMIC.exe product where "name like 'Cisco Jabber%'" call uninstall > C:\Windows\Temp\CiscoJabberX64-Removal.log

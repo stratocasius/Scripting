@@ -1,0 +1,1 @@
+& cmd /c C:\Windows\System32\wbem\WMIC.exe product where "name like 'VLC media player%'" call uninstall > C:\Windows\Temp\VLC-Removal.log

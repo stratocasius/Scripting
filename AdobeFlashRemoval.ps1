@@ -1,0 +1,1 @@
+& cmd /c C:\Windows\System32\wbem\WMIC.exe product where "name like 'Adobe Flash%'" call uninstall > C:\Windows\Temp\AdobeFlash-Removal.log
