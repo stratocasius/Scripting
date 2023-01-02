@@ -1,0 +1,6 @@
+<enabled/> 
+<data id="AddinList" value="1" /> 
+<data id="LoadBehavior" value="3" /> 
+<data id="DoNotDisableAddinList" value="1" /> 
+<data id="NotificationReminderAddinData1" value="2524611661"/> 
+<data id="NotificationReminderAddinData2" value="0" />

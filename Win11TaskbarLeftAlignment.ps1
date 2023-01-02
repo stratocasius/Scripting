@@ -1,0 +1,2 @@
+### Windows 11 Taskbar Left Alignment
+New-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'TaskbarAl' -Value "0" -PropertyType DWord -ErrorAction SilentlyContinue

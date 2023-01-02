@@ -1,6 +1,10 @@
-### Litera Updated Suite Installer with Files - 10/18/2022
+### Litera Updated Suite Installer with Files - Updated .mdtx 11/24/2022
+### Litera Compare - DocXTools - DocXTools Companion
 ### Removed Litera Metadact from Suite and now is provided as a standalone app.
-### Exclude Rundll32.exe process from AV
+### Temporarily exclude Rundll32.exe process from AV protection
+### Updated Microsystems.Data.Enterprise.mdxt(11/23/22) for each C:\Users\username\Appdata\Local\Microsystems\Modules excluding Public
+### Removes Litera Icons from users Desktop
+### Rundll32.exe process AV exclusion
 Add-MpPreference -ExclusionProcess rundll32.exe -Verbose
 ### Litera Installers
 $LiteraCompare = "LiteraCompare_11.2.msi"
@@ -12,9 +16,20 @@ Start-Process "msiexec.exe" -ArgumentList $LiteraDocXToolsARGs -wait -nonewwindo
 $LiteraDocXToolsComp = "LiteraDocXtoolsCompanion_11.14.0_x64.msi"
 $LiteraDocXToolsCompARGs = "/I $LiteraDocXToolsComp PRODUCT_KEY=DC-300Iw2l-ST0-X-QD75F ACCEPT_EULA_AND_TPLA=1 RIBBON_OPTION=LiteraTab.xml GUIDED=0 /qn /l C:\Windows\Temp\LiteraDocXCompanion-INSTALL.log"
 Start-Process "msiexec.exe" -ArgumentList $LiteraDocXToolsCompARGs -wait -nonewwindow
-### Litera Customizations
-Copy-Item -path ".\LiteraCustomizations\Litera" -Destination "C:\ProgramData\Litera" -recurse -force -verbose
-Remove-Item -path $Env:LOCALAPPDATA\Microsystems\Modules\Microsystems.Data.Enterprise.mdxt -force -verbose
-Copy-Item -path "LiteraCustomizations\Microsystems.Data.Enterprise.mdxt" -Destination "C:\Program Files\Microsystems\Modules\" -force -verbose
+### Litera Customizations to C:\ProgramData\Litera folder
+Copy-Item -path ".\LiteraCustomizations\Litera" -Destination "C:\ProgramData\" -recurse -force -Verbose
+### Litera Microsystems.Data.Enterprise.mdxt to C:\Program Files\Microsystems\Modules folder
+Copy-Item -path .\LiteraCustomizations\Microsystems.Data.Enterprise.mdxt -Destination "C:\Program Files\Microsystems\Modules\" -force -verbose
+### Litera Microsystems.Data.Enterprise.mdxt to each User\Appdata\Microsystems\Modules folder
+$Source = '.\LiteraCustomizations\Microsystems.Data.Enterprise.mdxt'
+$listOfNames = Get-ChildItem C:\Users -Exclude Public |Select-Object -ExpandProperty Name 
+foreach ($User in $listOfNames)
+{
+    New-Item -ItemType Directory -Path C:\Users\$User\appdata\Local\Microsystems\Modules -Force -Verbose
+    Copy-Item -Path $Source -Destination C:\Users\$User\appdata\Local\Microsystems\Modules -Force -Verbose
+}
 ### Remove exclusion from C:\Windows\System32\rundll32.exe from AV
 Remove-MpPreference -ExclusionProcess rundll32.exe -Verbose
+### Remove Litera icons from users desktop
+Remove-Item -Path "C:\users\Public\Desktop\Litera*.lnk" -Recurse -Force -Verbose
+

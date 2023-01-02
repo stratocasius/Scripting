@@ -1,0 +1,1 @@
+Remove-AzureADDevice -ObjectId "99a1915d-298f-42d1-93ae-71646b85e2fa" -whatif

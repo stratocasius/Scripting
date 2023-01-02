@@ -7,3 +7,5 @@
 & cmd /c C:\Windows\System32\wbem\WMIC.exe product where "name like 'Java 8 Update 301%'" call uninstall > C:\Windows\Temp\Java8u301-Removal.log
 & cmd /c C:\Windows\System32\wbem\WMIC.exe product where "name like 'Java 8 Update 311%'" call uninstall > C:\Windows\Temp\Java8u311-Removal.log
 & cmd /c C:\Windows\System32\wbem\WMIC.exe product where "name like 'Java 8 Update 321%'" call uninstall > C:\Windows\Temp\Java8u321-Removal.log
+& cmd /c C:\Windows\System32\wbem\WMIC.exe product where "name like 'Java 8 Update 331%'" call uninstall > C:\Windows\Temp\Java8u331-Removal.log
+& cmd /c C:\Windows\System32\wbem\WMIC.exe product where "name like 'Java 8 Update 341%'" call uninstall > C:\Windows\Temp\Java8u341-Removal.log

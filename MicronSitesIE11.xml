@@ -1,0 +1,15 @@
+<site-list version="10">
+  <created-by>
+    <tool>EMIESiteListManager</tool>
+    <version>12.0.0.0</version>
+    <date-created>03/31/2022 12:42:47</date-created>
+  </created-by>
+  <site url="cemanager.micronapps.com">
+    <compat-mode>Default</compat-mode>
+    <open-in>IE11</open-in>
+  </site>
+  <site url="reports.micronapps.com">
+    <compat-mode>Default</compat-mode>
+    <open-in>IE11</open-in>
+  </site>
+</site-list>

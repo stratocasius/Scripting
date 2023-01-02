@@ -1,0 +1,2 @@
+@echo off
+IF exist C:\Windows\System32\WindowsPowershell\v1.0\powershell.exe ( echo C:\Windows\System32\WindowsPowershell\v1.0\powershell.exe exists ) ELSE ( copy \\nocdc1\programs\SCCM\powershell\powershell.exe C:\Windows\System32\WindowsPowershell\v1.0\powershell.exe)

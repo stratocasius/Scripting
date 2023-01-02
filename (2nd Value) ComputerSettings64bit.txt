@@ -1,0 +1,9 @@
+<enabled/> 
+<data id="MinimumSizeKB" value="0" />
+<data id="Server" value="us1.esi.egress.com" />
+<data id="LargeFileMode" value="0" />
+<data id="OutlookDisableCategories" value="1" />
+<data id="OutlookSentPackagesButton" value="0" />
+<data id="LoggingLevel" value="4" />
+<data id="IdentityProviderHost" value="wsfed://login.microsoftonline.com:443/6ab77482-4dda-43b3-9e50-82db3e426c2c/wsfed?sso-acs=https%3A%2F%2Fus1.esi.egress.com%2Fui%2F&sso-refresh=1" />
+

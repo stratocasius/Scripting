@@ -1,0 +1,5 @@
+### Enable Cert Padding Check 11/17/2022 for both x86 and x86
+if((Test-Path -LiteralPath "HKLM:\SOFTWARE\Microsoft\Cryptography\Wintrust\Config") -ne $true) {  New-Item "HKLM:\SOFTWARE\Microsoft\Cryptography\Wintrust\Config" -force -ea SilentlyContinue };
+New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Microsoft\Cryptography\Wintrust\Config' -Name 'EnableCertPaddingCheck' -Value '1' -PropertyType String -Force -ea SilentlyContinue;
+if((Test-Path -LiteralPath "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Cryptography\Wintrust\Config") -ne $true) {  New-Item "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Cryptography\Wintrust\Config" -force -ea SilentlyContinue };
+New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\WOW6432Node\Microsoft\Cryptography\Wintrust\Config' -Name 'EnableCertPaddingCheck' -Value '1' -PropertyType String -Force -ea SilentlyContinue;

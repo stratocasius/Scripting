@@ -1,0 +1,71 @@
+<?xml version="1.0" ?> 
+<!-- 
+Egress Outlook Add-in ADMX Policy file for Intune MDM ingestation 
+Egress 
+
+REFERENCES: 
+https://docs.microsoft.com/en-us/windows/client-management/mdm/understanding-admx-backed-policies 
+https://docs.microsoft.com/en-us/previous-versions/windows/desktop/Policy/admx-schema 
+https://techcommunity.microsoft.com/t5/intune-customer-success/support-tip-ingesting-office-admx-backed-policies-using/ba-p/354824 
+https://osddeployment.dk/2019/01/02/how-does-a-custom-set-of-admx-based-policies-work-with-intune 
+
+ADMX Ingestion OMA-URI: 
+./Device/Vendor/MSFT/Policy/ConfigOperations/ADMXInstall/Egress/Policy/OutlookAddin 
+--> 
+<policyDefinitions revision="1.0" schemaVersion="1.0"> 
+    <policyNamespaces> 
+        <target prefix="EgressOutlookAddin" namespace="Egress.Policies.EgressOutlookAddin" /> 
+        <using  prefix="windows" namespace="Microsoft.Policies.Windows" /> 
+    </policyNamespaces> 
+    <resources minRequiredRevision="1.0" /> 
+    <categories> 
+        <category name="OutlookAddin" displayName="Egress Outlook Addin" /> 
+    </categories> 
+
+    <policies> 
+        <!-- Computer Settings 64bit --> 
+        <!-- ./Device/Vendor/MSFT/Policy/Config/Egress~Policy~OutlookAddin/ComputerSettings64bit --> 
+        <policy name="ComputerSettings64bit" class="Machine" 
+                displayName="Egress Outlook Addin Computer Settings 64bit" 
+                key="SOFTWARE\WOW6432Node\Egress\Switch"> 
+            <parentCategory ref="OutlookAddin" /> 
+            <supportedOn ref="windows:SUPPORTED_Windows10" /> 
+            <elements> 
+				<decimal id="MinimumSizeKB" valueName="MinimumSizeKB" maxValue="9999999" />
+				<text id="Server" valueName="Server" />
+				<decimal id="LargeFileMode" valueName="LargeFileMode" maxValue="2" />
+				<decimal id="OutlookDisableCategories" valueName="OutlookDisableCategories" maxValue="1" />
+				<decimal id="OutlookSentPackagesButton" valueName="OutlookSentPackagesButton" maxValue="1" />
+				<decimal id="LoggingLevel" valueName="LoggingLevel" maxValue="4" />
+				<text id="IdentityProviderHost" valueName="IdentityProviderHost" />
+            </elements> 
+        </policy> 
+
+        <!-- User Settings --> 
+        <!-- ./User/Vendor/MSFT/Policy/Config/Egress~Policy~OutlookAddin/UserSettings --> 
+        <policy name="UserSettings" class="User" 
+                displayName="Egress Outlook Addin User Settings" 
+                key="SOFTWARE\Egress\Switch"> 
+            <parentCategory ref="OutlookAddin" /> 
+            <supportedOn ref="windows:SUPPORTED_Windows10" /> 
+            <elements> 
+                <text id="AddinList" 
+                      key="SOFTWARE\Policies\Microsoft\Office\16.0\Outlook\Resiliency\AddinList" 
+                      valueName="EgressEmailProtection" /> 
+                <decimal id="LoadBehavior" 
+                         key="SOFTWARE\Microsoft\Office\Outlook\Addins\EgressEmailProtection" 
+                         valueName="LoadBehavior" /> 
+                <decimal id="DoNotDisableAddinList" 
+                         key="SOFTWARE\Microsoft\Office\16.0\Outlook\Resiliency\DoNotDisableAddinList" 
+                         valueName="EgressEmailProtection" /> 
+                <decimal id="NotificationReminderAddinData1" 
+                         key="SOFTWARE\Microsoft\Office\16.0\Outlook\Resiliency\NotificationReminderAddinData" 
+                         valueName="EgressEmailProtection" maxValue="2524611661"/> 
+                <decimal id="NotificationReminderAddinData2" 
+                         key="SOFTWARE\Microsoft\Office\16.0\Outlook\Resiliency\NotificationReminderAddinData" 
+                         valueName="EgressEmailProtection\dtype" />     
+            </elements>  
+        </policy> 
+
+    </policies> 
+</policyDefinitions>
