@@ -1,0 +1,11 @@
+
+$CustomRibbonPath = OutlookCustomizations(olkexplorer).xml"  # Replace <CustomRibbonXMLURL> with the URL of the uploaded XML file
+
+$RegPath = "HKCU:\Software\Microsoft\Office\16.0\Common"
+$RegName = "CustomUI"
+
+$RegistryValue = @"
+<mso:customUI xmlns:x5="MimecastServicesForOutlook.AddinModule" xmlns:x4="9758a0e2-7861-440f-b467-1823144e5b65_AD1DAEDE9B223E439E22FE42A1B848B4" xmlns:x3="PSShip.OutlookAddin" xmlns:x2="WebExOI.Addin" xmlns:x1="PhishAlert.AddinModule" xmlns:mso="http://schemas.microsoft.com/office/2009/07/customui"><mso:ribbon><mso:qat/><mso:tabs><mso:tab idQ="mso:TabMail"><mso:group idQ="x1:adxRibbonGroup_bd8c038968324074810a4b490fcfd43e" insertBeforeQ="x2:BEFF9431-C438-42DF-BFD1-C18CDB4CF877-C0_CiscoPTOutlookMain"/><mso:group idQ="mso:GroupTeams" visible="false"/><mso:group idQ="mso:GroupQuickSteps" visible="false"/><mso:group idQ="mso:GroupMoveActions" visible="false"/><mso:group idQ="mso:GroupMailOptions" visible="false"/><mso:group idQ="mso:GroupGroups" visible="false"/><mso:group idQ="mso:GroupSpeech" visible="false"/><mso:group idQ="mso:GroupOfficeApps" visible="false"/><mso:group idQ="x3:PS_ShipGroupMail" visible="false"/><mso:group idQ="x4:Group_9758a0e2-7861-440f-b467-1823144e5b65_msgreadTabMessage.grp1_TabMail" visible="false"/></mso:tab><mso:tab idQ="mso:TabCalendarTableView"><mso:group idQ="mso:GroupGroups" visible="false"/></mso:tab><mso:tab idQ="mso:TabCalendar"><mso:group idQ="mso:GroupGroups" visible="false"/></mso:tab><mso:tab idQ="mso:TabContacts"><mso:group idQ="mso:GroupGroups" visible="false"/></mso:tab><mso:tab idQ="mso:TabTasks"><mso:group idQ="mso:GroupGroups" visible="false"/></mso:tab><mso:tab idQ="mso:TabNotes"><mso:group idQ="mso:GroupGroups" visible="false"/></mso:tab><mso:tab idQ="mso:TabHomeGroup" visible="false"/><mso:tab idQ="mso:HelpTab" visible="false"><mso:group idQ="mso:GroupHelpAndSupport" visible="false"/><mso:group idQ="mso:GroupToolsWorkspace" visible="false"/></mso:tab><mso:tab idQ="x5:adxRibbonTab_c4dc3496375345748858382774b12030"/></mso:tabs>@"
+"@
+
+Set-ItemProperty -Path $RegPath -Name $RegName -Value $RegistryValue -Verbose 

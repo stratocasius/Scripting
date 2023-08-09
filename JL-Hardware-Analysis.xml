@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<DataCollectorSet>
+	<Status>0</Status>
+	<Duration>21600</Duration>
+	<Description>
+	</Description>
+	<DescriptionUnresolved>
+	</DescriptionUnresolved>
+	<DisplayName>
+	</DisplayName>
+	<DisplayNameUnresolved>
+	</DisplayNameUnresolved>
+	<SchedulesEnabled>-1</SchedulesEnabled>
+	<LatestOutputLocation>C:\PerfLogs\Admin\JL-HardwareAnalysis\</LatestOutputLocation>
+	<Name>JL-HardwareAnalysis</Name>
+	<OutputLocation>C:\PerfLogs\Admin\JL-HardwareAnalysis\</OutputLocation>
+	<RootPath>%systemdrive%\PerfLogs\Admin\JL-HardwareAnalysis</RootPath>
+	<Segment>0</Segment>
+	<SegmentMaxDuration>0</SegmentMaxDuration>
+	<SegmentMaxSize>0</SegmentMaxSize>
+	<SerialNumber>2</SerialNumber>
+	<Server>
+	</Server>
+	<Subdirectory>
+	</Subdirectory>
+	<SubdirectoryFormat>0</SubdirectoryFormat>
+	<SubdirectoryFormatPattern>
+	</SubdirectoryFormatPattern>
+	<Task>
+	</Task>
+	<TaskRunAsSelf>0</TaskRunAsSelf>
+	<TaskArguments>
+	</TaskArguments>
+	<TaskUserTextArguments>
+	</TaskUserTextArguments>
+	<UserAccount>SYSTEM</UserAccount>
+	<Security>O:BAG:DUD:AI(A;;FA;;;SY)(A;;FA;;;BA)(A;;0x1200a9;;;LU)(A;;0x1301ff;;;S-1-5-80-2661322625-712705077-2999183737-3043590567-590698655)(A;ID;0x1f019f;;;BA)(A;ID;0x1f019f;;;SY)(A;ID;FR;;;AU)(A;ID;FR;;;LS)(A;ID;FR;;;NS)(A;ID;FA;;;BA)</Security>
+	<StopOnCompletion>0</StopOnCompletion>
+	<PerformanceCounterDataCollector>
+		<DataCollectorType>0</DataCollectorType>
+		<Name>System Monitor Log</Name>
+		<FileName>System Monitor Log</FileName>
+		<FileNameFormat>3</FileNameFormat>
+		<FileNameFormatPattern>
+		</FileNameFormatPattern>
+		<LogAppend>0</LogAppend>
+		<LogCircular>0</LogCircular>
+		<LogOverwrite>0</LogOverwrite>
+		<LatestOutputLocation>C:\PerfLogs\Admin\JL-HardwareAnalysis\LT4122_System Monitor Log.blg</LatestOutputLocation>
+		<DataSourceName>
+		</DataSourceName>
+		<SampleInterval>30</SampleInterval>
+		<SegmentMaxRecords>0</SegmentMaxRecords>
+		<LogFileFormat>3</LogFileFormat>
+		<Counter>\Memory\Available MBytes</Counter>
+		<Counter>\Memory\Pages/sec</Counter>
+		<Counter>\Network Adapter(*)\Bytes Total/sec</Counter>
+		<Counter>\PhysicalDisk(_Total)\% Idle Time</Counter>
+		<Counter>\PhysicalDisk(_Total)\Avg. Disk Bytes/Read</Counter>
+		<Counter>\PhysicalDisk(_Total)\Avg. Disk Bytes/Write</Counter>
+		<Counter>\Processor(_Total)\% Processor Time</Counter>
+		<Counter>\Processor(_Total)\% Privileged Time</Counter>
+		<Counter>\Processor(_Total)\% User Time</Counter>
+		<CounterDisplayName>\Memory\Available MBytes</CounterDisplayName>
+		<CounterDisplayName>\Memory\Pages/sec</CounterDisplayName>
+		<CounterDisplayName>\Network Adapter(*)\Bytes Total/sec</CounterDisplayName>
+		<CounterDisplayName>\PhysicalDisk(_Total)\% Idle Time</CounterDisplayName>
+		<CounterDisplayName>\PhysicalDisk(_Total)\Avg. Disk Bytes/Read</CounterDisplayName>
+		<CounterDisplayName>\PhysicalDisk(_Total)\Avg. Disk Bytes/Write</CounterDisplayName>
+		<CounterDisplayName>\Processor(_Total)\% Processor Time</CounterDisplayName>
+		<CounterDisplayName>\Processor(_Total)\% Privileged Time</CounterDisplayName>
+		<CounterDisplayName>\Processor(_Total)\% User Time</CounterDisplayName>
+	</PerformanceCounterDataCollector>
+	<DataManager>
+		<Enabled>0</Enabled>
+		<CheckBeforeRunning>0</CheckBeforeRunning>
+		<MinFreeDisk>0</MinFreeDisk>
+		<MaxSize>0</MaxSize>
+		<MaxFolderCount>0</MaxFolderCount>
+		<ResourcePolicy>0</ResourcePolicy>
+		<ReportFileName>report.html</ReportFileName>
+		<RuleTargetFileName>report.xml</RuleTargetFileName>
+		<EventsFileName>
+		</EventsFileName>
+	</DataManager>
+</DataCollectorSet>
+
+"@
+
+$collectorSetXml | Out-File -FilePath "C:\jltools\JL-HardwareAnalysis-6h.xml"
+start-sleep 5
+# Import the data collector set from the JL-Apps.xml file and save it as JLStats
+$logmanCommand = "logman import -n JLStats4 -xml C:\jltools\JL-HardwareAnalysis-6h.xml"
+Invoke-Expression $logmanCommand
+
+# Start the data collection process using the JLStats data collector set
+$logmanCommand = "logman start JLStats4"
+Invoke-Expression $logmanCommand
