@@ -3,13 +3,13 @@
 
 Install-module -name msonline -force 
 Connect-MsolService
-$CHGList = Import-Csv -path "C:\Win32 Apps\Scripts\BulkImportGroups\IE\IE11-June2023-Rapid7\IE11Enabled.csv" -Verbose
+$CHGList = Import-Csv -path "C:\Users\dossr\OneDrive - Jackson Lewis P.C\Documents\Scripts\BulkImportGroups\IE\IE11-June2023-Rapid7\IE11Enabled.csv" -Verbose
 $ObjectID = @(
     @{ Name = 'version:v1.0'; Expression = { $_.'ObjectId' } }
 )
-'*'| Select-Object -Property $ObjectID |Export-CSV -Path "C:\Win32 Apps\Scripts\BulkImportGroups\IE\IE11-June2023-Rapid7\IE-June2023-Rapid7GroupIDs.csv" -NoTypeInformation -Append -Force
+'*'| Select-Object -Property $ObjectID |Export-CSV -Path "C:\Users\dossr\OneDrive - Jackson Lewis P.C\Documents\Scripts\BulkImportGroups\IE\IE11-June2023-Rapid7\IE-June2023-Rapid7GroupIDs.csv" -NoTypeInformation -Append -Force
 ForEach ($displayName in $CHGList) {
-    Get-MsolDevice -Name $displayName.displayName | Select-Object -Property $ObjectID |Export-CSV -Path "C:\Win32 Apps\Scripts\BulkImportGroups\IE\IE11-June2023-Rapid7\IE-June2023-Rapid7BulkIDs.csv" -NoTypeInformation -Append
+    Get-MsolDevice -Name $displayName.displayName | Select-Object -Property $ObjectID |Export-CSV -Path "C:\Users\dossr\OneDrive - Jackson Lewis P.C\Documents\Scripts\BulkImportGroups\IE\IE11-June2023-Rapid7\IE-June2023-Rapid7BulkIDs.csv" -NoTypeInformation -Append
 }
 
 #######################################################
@@ -40,7 +40,7 @@ $Owners | Out-File -encoding UTF8 "C:\Win32 Apps\Scripts\BulkImportGroups\IERemo
 ### Build UPN list from device group's object ID.
 Connect-AzureAD
 $Result=@()
-$Members = Get-AzureADGroupMember -ObjectId "3745b3e9-9be7-48bc-83d9-fc64c7c73e23"
+$Members = Get-AzureADGroupMember -ObjectId "5a41d241-55b2-430e-8380-d43ad2b631cc"
 foreach ($Member in $Members) {
     $DeviceOwner = $Member|Get-AzureADDeviceRegisteredOwner
     $deviceprops = [ordered] @{
@@ -54,5 +54,5 @@ foreach ($Member in $Members) {
     $Result += $deviceobj
 }
 $Result 
-$Result | Export-CSV "C:\Win32 Apps\Scripts\BulkImportGroups\IE\IE11-June2023-Rapid7\IE11Enabled-DeviceOwners.csv" -verbose
+$Result | Export-CSV "C:\Users\dossr\OneDrive - Jackson Lewis P.C\Documents\Scripts\BulkImportGroups\IE\IE11-June2023-Rapid7\IE-June2023-Rapid7-DeviceOwners.csv" -verbose
 
