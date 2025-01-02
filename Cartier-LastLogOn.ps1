@@ -1,0 +1,3 @@
+$User = Get-ADUser CISTestUser -Properties *
+$DC = Get-ADDomainController -Filter {(name -like "*")} | Select Hostname
+$DC | % {$DCName = $_.HostName ; Get-ADUser -Server $_.HostName $user.SamAccountName -Properties enabled,lastlogon,lastlogontimestamp | Select @{Name="DC";Expression={$DCName}},enabled,@{n='lastlogon';e={[DateTime]::FromFileTime($_.pwdLastSet)}},@{n='lastlogonTimeStamp';e={[DateTime]::FromFileTime($_.LastLogonTimeStamp)}}}

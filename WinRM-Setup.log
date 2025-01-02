@@ -1,0 +1,34 @@
+﻿# Start logging
+Start-Transcript -Path "C:\Path\To\Log\WinRM-Setup.log" -Append
+
+# Function to enable and configure WinRM
+function Enable-WinRM {
+    # Check if the WinRM service is running
+    $winRMService = Get-Service -Name "WinRM" -ErrorAction SilentlyContinue
+
+    if ($winRMService -and $winRMService.Status -eq 'Running') {
+        Write-Output "WinRM service is already running."
+    } else {
+        Write-Output "Starting WinRM service..."
+        Start-Service -Name "WinRM"
+        Set-Service -Name "WinRM" -StartupType Automatic
+        Write-Output "WinRM service started and set to automatic."
+    }
+
+    # Check if WinRM is allowed through the firewall
+    $winRMFirewallRule = Get-NetFirewallRule -DisplayName "Windows Remote Management (HTTP-In)" -ErrorAction SilentlyContinue
+
+    if ($winRMFirewallRule -and $winRMFirewallRule.Enabled -eq 'True') {
+        Write-Output "WinRM is already allowed through the firewall."
+    } else {
+        Write-Output "Enabling WinRM through the firewall..."
+        Enable-NetFirewallRule -DisplayName "Windows Remote Management (HTTP-In)"
+        Write-Output "WinRM is now allowed through the firewall."
+    }
+}
+
+# Call the function to enable and configure WinRM
+Enable-WinRM
+
+# Stop logging
+Stop-Transcript
