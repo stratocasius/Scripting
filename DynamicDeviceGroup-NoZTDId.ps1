@@ -1,0 +1,1 @@
+(device.devicePhysicalIDs -any _ -NotstartsWith "[ZTDid]") and (device.DeviceOSVersion -startsWith "10.0.26100") and (device.DeviceOSType -startsWith "Windows") and (device.displayName -startsWith "LT") or (device.displayName -startsWith "DT") and not ((device.DeviceModel -contains "VMware") or (device.DeviceModel -eq "Virtual Machine"))
