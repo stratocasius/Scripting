@@ -1,0 +1,4 @@
+### ndOffice 4.0.1 Suite Removal - 11/06/2024
+& cmd /c C:\Windows\System32\wbem\WMIC.exe product where "name like 'Netdocuments ndOffice'" call uninstall > C:\programdata\microsoft\IntuneManagementExtension\Logs\ndOffice-Removal.log
+& cmd /c C:\Windows\System32\wbem\WMIC.exe product where "name like 'Netdocuments ndMail Folder Mapping'" call uninstall > C:\programdata\microsoft\IntuneManagementExtension\Logs\ndMailFM-Removal.log
+& cmd /c C:\Windows\System32\wbem\WMIC.exe product where "name like 'Netdocuments ndMail'" call uninstall > C:\programdata\microsoft\IntuneManagementExtension\Logs\ndMail-Removal.log
