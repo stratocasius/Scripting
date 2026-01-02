@@ -1,0 +1,13 @@
+Intapp Time and Desktop Extension Install Manual Instructions:
+
+Copy "IntappTime2025-ManualInstall" folder from G:\IntappTime2025-ManualInstall\ to C:\jltools folder locally.
+
+Open Powershell ISE as admin, then open the Intapp9.13.64-ManualInstall.ps1 within the "C:\jltools\IntappTime2025-ManualInstall" folder.
+
+Set executionPolicy to bypass from pshell prompt: "Set-ExecutionPolicy Bypass -force" - press enter.
+
+Change directory to "C:\jltools\IntappTime2025-ManualInstall".(Type cd "C:\jltools\IntappTime2025-ManualInstall-ManualInstall" - press enter).
+
+Click the Play button from Powershell's toolbar at the top to run entire script.
+
+Verify Intapp Time 9.13.64 and Desktop Extension 13.0 are installed and functions as expected.
