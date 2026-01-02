@@ -1,0 +1,80 @@
+{
+  "displayName": "Map W Drive - Wage & Hour Share",
+  "description": "Maps the W: drive to \\\\VM-NASUNI-01\\SHARES\\DEPARTMENTS\\WAGE & HOUR for all assigned users.",
+  "platforms": "windows10AndLater",
+  "technologies": "mdm",
+  "settings": [
+    {
+      "@odata.type": "#microsoft.graph.deviceManagementConfigurationSettingInstance",
+      "settingDefinitionId": "user:windows/driveMaps",
+      "settingInstanceTemplateReference": {
+        "settingInstanceTemplateId": "user:windows/driveMaps"
+      },
+      "settingValue": {
+        "@odata.type": "#microsoft.graph.deviceManagementConfigurationChoiceSettingValue",
+        "value": "configureDriveMaps",
+        "children": [
+          {
+            "@odata.type": "#microsoft.graph.deviceManagementConfigurationGroupSettingCollectionInstance",
+            "groupSettingCollectionValue": [
+              {
+                "children": [
+                  {
+                    "@odata.type": "#microsoft.graph.deviceManagementConfigurationSimpleSettingValue",
+                    "settingDefinitionId": "action",
+                    "simpleSettingValue": {
+                      "value": "Update"
+                    }
+                  },
+                  {
+                    "@odata.type": "#microsoft.graph.deviceManagementConfigurationSimpleSettingValue",
+                    "settingDefinitionId": "location",
+                    "simpleSettingValue": {
+                      "value": "\\\\VM-NASUNI-01\\SHARES\\DEPARTMENTS\\WAGE & HOUR"
+                    }
+                  },
+                  {
+                    "@odata.type": "#microsoft.graph.deviceManagementConfigurationSimpleSettingValue",
+                    "settingDefinitionId": "label",
+                    "simpleSettingValue": {
+                      "value": "Wage & Hour Share"
+                    }
+                  },
+                  {
+                    "@odata.type": "#microsoft.graph.deviceManagementConfigurationSimpleSettingValue",
+                    "settingDefinitionId": "reconnect",
+                    "simpleSettingValue": {
+                      "value": "true"
+                    }
+                  },
+                  {
+                    "@odata.type": "#microsoft.graph.deviceManagementConfigurationSimpleSettingValue",
+                    "settingDefinitionId": "driveLetter",
+                    "simpleSettingValue": {
+                      "value": "W:"
+                    }
+                  },
+                  {
+                    "@odata.type": "#microsoft.graph.deviceManagementConfigurationSimpleSettingValue",
+                    "settingDefinitionId": "hideThisDrive",
+                    "simpleSettingValue": {
+                      "value": "Show"
+                    }
+                  },
+                  {
+                    "@odata.type": "#microsoft.graph.deviceManagementConfigurationSimpleSettingValue",
+                    "settingDefinitionId": "hideAllDrives",
+                    "simpleSettingValue": {
+                      "value": "NoChange"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "assignments": []
+}
