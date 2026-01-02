@@ -1,1 +1,1 @@
-msiexec /i "GlobalProtect64-6.2.8.msi" PORTAL=jlvpn.gpcloudservice.com CONNECTMETHOD=pre-logon PRELOGON=1 EXTCERTOID=1.3.6.1.4.1.311.21.8.12699277.13079172.10503332.10842942.11634168.37.4702739.3779210 CERTIFICATESTORELOOKUP=machine /qn /l*v c:\windows\temp\GlobalProtect-6.2.8-INSTALL.log /norestart
+.\R-4.4.1-win.exe /VERYSILENT

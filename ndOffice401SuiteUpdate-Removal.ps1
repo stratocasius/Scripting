@@ -2,3 +2,4 @@
 & cmd /c C:\Windows\System32\wbem\WMIC.exe product where "name like 'Netdocuments ndOffice'" call uninstall > C:\programdata\microsoft\IntuneManagementExtension\Logs\ndOffice-Removal.log
 & cmd /c C:\Windows\System32\wbem\WMIC.exe product where "name like 'Netdocuments ndMail Folder Mapping'" call uninstall > C:\programdata\microsoft\IntuneManagementExtension\Logs\ndMailFM-Removal.log
 & cmd /c C:\Windows\System32\wbem\WMIC.exe product where "name like 'Netdocuments ndMail'" call uninstall > C:\programdata\microsoft\IntuneManagementExtension\Logs\ndMail-Removal.log
+& cmd /c "C:\ProgramData\Package Cache\{f7595622-f27a-4d72-ac15-52e1bf658ce4}\ndOfficeSetup.exe" /uninstall /s /l C:\programdata\microsoft\IntuneManagementExtension\Logs\ndOffice401Installer-Removal.log
