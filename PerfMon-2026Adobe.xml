@@ -1,0 +1,271 @@
+### 12/29/2025 - PerfMon for Adobe Acrobat scope. 
+### Added: ACC.exe(ServiceNow Agent), Acrobat.exe, AcroCEF.exe, Adobe Deskop Service.exe, AdobeCollabSync.exe, AdobeIPCBroker.exe, AdobeNotificationClient.exe, AdobeUpdateService.exe
+### Added: CCLibrary.exe, CCXProcess.exe, CoreSync.exe, Creative Cloud Helper.exe, Creative Cloud UI Helper.exe, Creative Cloud.exe
+### Removed: Chrome, Citrix, IntappTime, IntappTimeDesktopExtension
+$collectorSetXml = @"
+<?xml version="1.0" encoding="UTF-16"?>
+<DataCollectorSet>
+	<Status>0</Status>
+	<Duration>21600</Duration>
+	<Description>
+	</Description>
+	<DescriptionUnresolved>
+	</DescriptionUnresolved>
+	<DisplayName>
+	</DisplayName>
+	<DisplayNameUnresolved>
+	</DisplayNameUnresolved>
+	<SchedulesEnabled>-1</SchedulesEnabled>
+	<LatestOutputLocation>C:\PerfLogs\Admin\JL-PerfMon\LT4036_20230419-000009</LatestOutputLocation>
+	<Name>JL-Process-HardwareAnalysis</Name>
+	<OutputLocation>C:\PerfLogs\Admin\JL-Process-HardwareAnalysis\LT4122_20230515-000010</OutputLocation>
+	<RootPath>%systemdrive%\PerfLogs\Admin\JL-Process-HardwareAnalysis</RootPath>
+	<Segment>0</Segment>
+	<SegmentMaxDuration>0</SegmentMaxDuration>
+	<SegmentMaxSize>0</SegmentMaxSize>
+	<SerialNumber>10</SerialNumber>
+	<Server>
+	</Server>
+	<Subdirectory>
+	</Subdirectory>
+	<SubdirectoryFormat>3</SubdirectoryFormat>
+	<SubdirectoryFormatPattern>yyyyMMdd\-NNNNNN</SubdirectoryFormatPattern>
+	<Task>
+	</Task>
+	<TaskRunAsSelf>0</TaskRunAsSelf>
+	<TaskArguments>
+	</TaskArguments>
+	<TaskUserTextArguments>
+	</TaskUserTextArguments>
+	<UserAccount>SYSTEM</UserAccount>
+	<Security>O:BAG:DUD:AI(A;;FA;;;SY)(A;;FA;;;BA)(A;;0x1200a9;;;LU)(A;;0x1301ff;;;S-1-5-80-2661322625-712705077-2999183737-3043590567-590698655)(A;ID;0x1f019f;;;BA)(A;ID;0x1f019f;;;SY)(A;ID;FR;;;AU)(A;ID;FR;;;LS)(A;ID;FR;;;NS)(A;ID;FA;;;BA)</Security>
+	<StopOnCompletion>0</StopOnCompletion>
+	<PerformanceCounterDataCollector>
+		<DataCollectorType>0</DataCollectorType>
+		<Name>DataCollector01</Name>
+		<FileName>DataCollector01</FileName>
+		<FileNameFormat>1</FileNameFormat>
+		<FileNameFormatPattern>
+		</FileNameFormatPattern>
+		<LogAppend>0</LogAppend>
+		<LogCircular>0</LogCircular>
+		<LogOverwrite>0</LogOverwrite>
+		<LatestOutputLocation>C:\PerfLogs\Admin\JL-PerfMon\LT4036_20230419-000009\DataCollector01.blg</LatestOutputLocation>
+		<DataSourceName>
+		</DataSourceName>
+		<SampleInterval>30</SampleInterval>
+		<SegmentMaxRecords>0</SegmentMaxRecords>
+		<LogFileFormat>3</LogFileFormat>
+    <Counter>\Process(ACC)\% Processor Time</Counter>
+		<Counter>\Process(ACC)\IO Data Bytes/sec</Counter>
+		<Counter>\Process(ACC)\Private Bytes</Counter>
+    <Counter>\Process(Acrobat)\% Processor Time</Counter>
+		<Counter>\Process(Acrobat)\IO Data Bytes/sec</Counter>
+		<Counter>\Process(Acrobat)\Private Bytes</Counter>
+     <Counter>\Process(AcroCEF)\% Processor Time</Counter>
+		<Counter>\Process(AcroCEF)\IO Data Bytes/sec</Counter>
+		<Counter>\Process(AcroCEF)\Private Bytes</Counter>
+     <Counter>\Process(Adobe Deskop Service)\% Processor Time</Counter>
+		<Counter>\Process(Adobe Deskop Service)\IO Data Bytes/sec</Counter>
+		<Counter>\Process(Adobe Deskop Service)\Private Bytes</Counter>
+    <Counter>\Process(AdobeCollabSync)\% Processor Time</Counter>
+		<Counter>\Process(AdobeCollabSync)\IO Data Bytes/sec</Counter>
+		<Counter>\Process(AdobeCollabSync)\Private Bytes</Counter>
+     <Counter>\Process(AdobeIPCBroker)\% Processor Time</Counter>
+		<Counter>\Process(AdobeIPCBroker)\IO Data Bytes/sec</Counter>
+		<Counter>\Process(AdobeIPCBroker)\Private Bytes</Counter>
+    <Counter>\Process(AdobeNotificationClient)\% Processor Time</Counter>
+		<Counter>\Process(AdobeNotificationClient)\IO Data Bytes/sec</Counter>
+		<Counter>\Process(AdobeNotificationClient)\Private Bytes</Counter>
+    <Counter>\Process(AdobeUpdateService)\% Processor Time</Counter>
+		<Counter>\Process(AdobeUpdateService)\IO Data Bytes/sec</Counter>
+		<Counter>\Process(AdobeUpdateService)\Private Bytes</Counter>
+    <Counter>\Process(CCLibrary)\% Processor Time</Counter>
+		<Counter>\Process(CCLibrary)\IO Data Bytes/sec</Counter>
+		<Counter>\Process(CCLibrary)\Private Bytes</Counter>
+     <Counter>\Process(CCXProcess)\% Processor Time</Counter>
+		<Counter>\Process(CCXProcess)\IO Data Bytes/sec</Counter>
+		<Counter>\Process(CCXProcess)\Private Bytes</Counter>
+    <Counter>\Process(CoreSync)\% Processor Time</Counter>
+		<Counter>\Process(CoreSync)\IO Data Bytes/sec</Counter>
+		<Counter>\Process(CoreSync)\Private Bytes</Counter>
+    <Counter>\Process(Creative Cloud Helper)\% Processor Time</Counter>
+		<Counter>\Process(Creative Cloud Helper)\IO Data Bytes/sec</Counter>
+		<Counter>\Process(Creative Cloud Helper)\Private Bytes</Counter>       
+     <Counter>\Process(Creative Cloud UI Helper)\% Processor Time</Counter>
+		<Counter>\Process(Creative Cloud UI Helper)\IO Data Bytes/sec</Counter>
+		<Counter>\Process(Creative Cloud UI Helper)\Private Bytes</Counter>
+     <Counter>\Process(Creative Cloud)\% Processor Time</Counter>
+		<Counter>\Process(Creative Cloud)\IO Data Bytes/sec</Counter>
+		<Counter>\Process(Creative Cloud)\Private Bytes</Counter>
+		<Counter>\Process(msedge)\% Processor Time</Counter>
+		<Counter>\Process(msedge)\IO Data Bytes/sec</Counter>
+		<Counter>\Process(msedge)\Private Bytes</Counter>
+		<Counter>\Process(MsMpEng)\% Processor Time</Counter>
+		<Counter>\Process(MsMpEng)\IO Data Bytes/sec</Counter>
+		<Counter>\Process(MsMpEng)\Private Bytes</Counter>
+		<Counter>\Process(ndOffice)\% Processor Time</Counter>
+		<Counter>\Process(ndOffice)\IO Data Bytes/sec</Counter>
+		<Counter>\Process(ndOffice)\Private Bytes</Counter>
+		<Counter>\Process(NetDocuments.ndMail.Application)\% Processor Time</Counter>
+		<Counter>\Process(NetDocuments.ndMail.Application)\IO Data Bytes/sec</Counter>
+		<Counter>\Process(NetDocuments.ndMail.Application)\Private Bytes</Counter>
+		<Counter>\Process(OneDrive)\% Processor Time</Counter>
+		<Counter>\Process(OneDrive)\IO Data Bytes/sec</Counter>
+		<Counter>\Process(OneDrive)\Private Bytes</Counter>
+		<Counter>\Process(OUTLOOK)\% Processor Time</Counter>
+		<Counter>\Process(OUTLOOK)\IO Data Bytes/sec</Counter>
+		<Counter>\Process(OUTLOOK)\Private Bytes</Counter>
+		<Counter>\Process(PANGPS)\% Processor Time</Counter>
+		<Counter>\Process(PANGPS)\IO Data Bytes/sec</Counter>
+		<Counter>\Process(PANGPS)\Private Bytes</Counter>
+		<Counter>\Process(PowerPDF)\% Processor Time</Counter>
+		<Counter>\Process(PowerPDF)\IO Data Bytes/sec</Counter>
+		<Counter>\Process(PowerPDF)\Private Bytes</Counter>
+		<Counter>\Process(jabra-direct)\% Processor Time</Counter>
+		<Counter>\Process(jabra-direct)\IO Data Bytes/sec</Counter>
+		<Counter>\Process(jabra-direct)\Private Bytes</Counter>
+		<Counter>\Process(Teams)\% Processor Time</Counter>
+		<Counter>\Process(Teams)\IO Data Bytes/sec</Counter>
+		<Counter>\Process(Teams)\Private Bytes</Counter>
+		<Counter>\Process(WINWORD)\% Processor Time</Counter>
+		<Counter>\Process(WINWORD)\IO Data Bytes/sec</Counter>
+		<Counter>\Process(WINWORD)\Private Bytes</Counter>
+		<Counter>\Memory\Available MBytes</Counter>
+		<Counter>\Memory\Page Faults/sec</Counter>
+		<Counter>\Memory\Pages/sec</Counter>
+		<Counter>\Network Adapter(*)\Bytes Total/sec</Counter>
+		<Counter>\PhysicalDisk(_Total)\% Idle Time</Counter>
+		<Counter>\PhysicalDisk(_Total)\Avg. Disk Bytes/Read</Counter>
+		<Counter>\PhysicalDisk(_Total)\Avg. Disk Bytes/Write</Counter>
+		<Counter>\Processor(_Total)\% Privileged Time</Counter>
+		<Counter>\Processor(_Total)\% Processor Time</Counter>
+		<Counter>\Processor(_Total)\% User Time</Counter>
+		<Counter>\Thermal Zone Information(\_SB._SAN.TZ01)\High Precision Temperature</Counter>
+		<Counter>\Thermal Zone Information(\_SB._SAN.TZ01)\Temperature</Counter>
+		<Counter>\Process(EXCEL)\% Processor Time</Counter>
+		<Counter>\Process(EXCEL)\Private Bytes</Counter>
+		<Counter>\Process(EXCEL)\IO Data Bytes/sec</Counter>
+		<Counter>\Process(POWERPNT)\% Processor Time</Counter>
+		<Counter>\Process(POWERPNT)\Private Bytes</Counter>
+		<Counter>\Process(POWERPNT)\IO Data Bytes/sec</Counter>
+    <CounterDisplayName>\Process(ACC)\% Processor Time</CounterDisplayName>
+		<CounterDisplayName>\Process(ACC)\IO Data Bytes/sec</CounterDisplayName>
+		<CounterDisplayName>\Process(ACC)\Private Bytes</CounterDisplayName>
+     <CounterDisplayName>\Process(Acrobat)\% Processor Time</CounterDisplayName>
+		<CounterDisplayName>\Process(Acrobat)\IO Data Bytes/sec</CounterDisplayName>
+		<CounterDisplayName>\Process(Acrobat)\Private Bytes</CounterDisplayName>
+    <CounterDisplayName>\Process(AcroCEF)\% Processor Time</CounterDisplayName>
+		<CounterDisplayName>\Process(AcroCEF)\IO Data Bytes/sec</CounterDisplayName>
+		<CounterDisplayName>\Process(AcroCEF)\Private Bytes</CounterDisplayName>
+    <CounterDisplayName>\Process(Adobe Deskop Service)\% Processor Time</CounterDisplayName>
+		<CounterDisplayName>\Process(Adobe Deskop Service)\IO Data Bytes/sec</CounterDisplayName>
+		<CounterDisplayName>\Process(Adobe Deskop Service)\Private Bytes</CounterDisplayName>
+    <CounterDisplayName>\Process(AdobeCollabSync)\% Processor Time</CounterDisplayName>
+		<CounterDisplayName>\Process(AdobeCollabSync)\IO Data Bytes/sec</CounterDisplayName>
+		<CounterDisplayName>\Process(AdobeCollabSync)\Private Bytes</CounterDisplayName>
+    <CounterDisplayName>\Process(AdobeIPCBroker)\% Processor Time</CounterDisplayName>
+		<CounterDisplayName>\Process(AdobeIPCBroker)\IO Data Bytes/sec</CounterDisplayName>
+		<CounterDisplayName>\Process(AdobeIPCBroker)\Private Bytes</CounterDisplayName>
+    <CounterDisplayName>\Process(AdobeNotificationClient)\% Processor Time</CounterDisplayName>
+		<CounterDisplayName>\Process(AdobeNotificationClient)\IO Data Bytes/sec</CounterDisplayName>
+		<CounterDisplayName>\Process(AdobeNotificationClient)\Private Bytes</CounterDisplayName>
+    <CounterDisplayName>\Process(AdobeUpdateService)\% Processor Time</CounterDisplayName>
+		<CounterDisplayName>\Process(AdobeUpdateService)\IO Data Bytes/sec</CounterDisplayName>
+		<CounterDisplayName>\Process(AdobeUpdateService)\Private Bytes</CounterDisplayName>
+        <CounterDisplayName>\Process(CCLibrary)\% Processor Time</CounterDisplayName>
+		<CounterDisplayName>\Process(CCLibrary)\IO Data Bytes/sec</CounterDisplayName>
+		<CounterDisplayName>\Process(CCLibrary)\Private Bytes</CounterDisplayName> 
+     <CounterDisplayName>\Process(CCXProcess)\% Processor Time</CounterDisplayName>
+		<CounterDisplayName>\Process(CCXProcess)\IO Data Bytes/sec</CounterDisplayName>
+		<CounterDisplayName>\Process(CCXProcess)\Private Bytes</CounterDisplayName> 
+     <CounterDisplayName>\Process(CoreSync)\% Processor Time</CounterDisplayName>
+		<CounterDisplayName>\Process(CoreSync)\IO Data Bytes/sec</CounterDisplayName>
+		<CounterDisplayName>\Process(CoreSync)\Private Bytes</CounterDisplayName> 
+     <CounterDisplayName>\Process(Creative Cloud Helper)\% Processor Time</CounterDisplayName>
+		<CounterDisplayName>\Process(Creative Cloud Helper)\IO Data Bytes/sec</CounterDisplayName>
+		<CounterDisplayName>\Process(Creative Cloud Helper)\Private Bytes</CounterDisplayName> 
+    <CounterDisplayName>\Process(Creative Cloud UI Helper)\% Processor Time</CounterDisplayName>
+		<CounterDisplayName>\Process(Creative Cloud UI Helper)\IO Data Bytes/sec</CounterDisplayName>
+		<CounterDisplayName>\Process(Creative Cloud UI Helper)\Private Bytes</CounterDisplayName> 
+     <CounterDisplayName>\Process(Creative Cloud)\% Processor Time</CounterDisplayName>
+		<CounterDisplayName>\Process(Creative Cloud)\IO Data Bytes/sec</CounterDisplayName>
+		<CounterDisplayName>\Process(Creative Cloud)\Private Bytes</CounterDisplayName> 
+		<CounterDisplayName>\Process(msedge)\% Processor Time</CounterDisplayName>
+		<CounterDisplayName>\Process(msedge)\IO Data Bytes/sec</CounterDisplayName>
+		<CounterDisplayName>\Process(msedge)\Private Bytes</CounterDisplayName>
+		<CounterDisplayName>\Process(MsMpEng)\% Processor Time</CounterDisplayName>
+		<CounterDisplayName>\Process(MsMpEng)\IO Data Bytes/sec</CounterDisplayName>
+		<CounterDisplayName>\Process(MsMpEng)\Private Bytes</CounterDisplayName>
+		<CounterDisplayName>\Process(ndOffice)\% Processor Time</CounterDisplayName>
+		<CounterDisplayName>\Process(ndOffice)\IO Data Bytes/sec</CounterDisplayName>
+		<CounterDisplayName>\Process(ndOffice)\Private Bytes</CounterDisplayName>
+		<CounterDisplayName>\Process(NetDocuments.ndMail.Application)\% Processor Time</CounterDisplayName>
+		<CounterDisplayName>\Process(NetDocuments.ndMail.Application)\IO Data Bytes/sec</CounterDisplayName>
+		<CounterDisplayName>\Process(NetDocuments.ndMail.Application)\Private Bytes</CounterDisplayName>
+		<CounterDisplayName>\Process(OneDrive)\% Processor Time</CounterDisplayName>
+		<CounterDisplayName>\Process(OneDrive)\IO Data Bytes/sec</CounterDisplayName>
+		<CounterDisplayName>\Process(OneDrive)\Private Bytes</CounterDisplayName>
+		<CounterDisplayName>\Process(OUTLOOK)\% Processor Time</CounterDisplayName>
+		<CounterDisplayName>\Process(OUTLOOK)\IO Data Bytes/sec</CounterDisplayName>
+		<CounterDisplayName>\Process(OUTLOOK)\Private Bytes</CounterDisplayName>
+		<CounterDisplayName>\Process(PowerPDF)\% Processor Time</CounterDisplayName>
+		<CounterDisplayName>\Process(PowerPDF)\IO Data Bytes/sec</CounterDisplayName>
+		<CounterDisplayName>\Process(PowerPDF)\Private Bytes</CounterDisplayName>
+		<CounterDisplayName>\Process(PanGPS)\% Processor Time</CounterDisplayName>
+		<CounterDisplayName>\Process(PanGPS)\IO Data Bytes/sec</CounterDisplayName>
+		<CounterDisplayName>\Process(PanGPS)\Private Bytes</CounterDisplayName>
+		<CounterDisplayName>\Process(Teams)\% Processor Time</CounterDisplayName>
+		<CounterDisplayName>\Process(Teams)\IO Data Bytes/sec</CounterDisplayName>
+		<CounterDisplayName>\Process(Teams)\Private Bytes</CounterDisplayName>
+		<CounterDisplayName>\Process(WINWORD)\% Processor Time</CounterDisplayName>
+		<CounterDisplayName>\Process(WINWORD)\IO Data Bytes/sec</CounterDisplayName>
+		<CounterDisplayName>\Process(WINWORD)\Private Bytes</CounterDisplayName>
+		<CounterDisplayName>\Memory\Available MBytes</CounterDisplayName>
+		<CounterDisplayName>\Memory\Page Faults/sec</CounterDisplayName>
+		<CounterDisplayName>\Memory\Pages/sec</CounterDisplayName>
+		<CounterDisplayName>\Network Adapter(*)\Bytes Total/sec</CounterDisplayName>
+		<CounterDisplayName>\PhysicalDisk(_Total)\% Idle Time</CounterDisplayName>
+		<CounterDisplayName>\PhysicalDisk(_Total)\Avg. Disk Bytes/Read</CounterDisplayName>
+		<CounterDisplayName>\PhysicalDisk(_Total)\Avg. Disk Bytes/Write</CounterDisplayName>
+		<CounterDisplayName>\Processor(_Total)\% Privileged Time</CounterDisplayName>
+		<CounterDisplayName>\Processor(_Total)\% Processor Time</CounterDisplayName>
+		<CounterDisplayName>\Processor(_Total)\% User Time</CounterDisplayName>
+		<CounterDisplayName>\Thermal Zone Information(\_SB._SAN.TZ01)\High Precision Temperature</CounterDisplayName>
+		<CounterDisplayName>\Thermal Zone Information(\_SB._SAN.TZ01)\Temperature</CounterDisplayName>
+		<CounterDisplayName>\Process(EXCEL)\% Processor Time</CounterDisplayName>
+		<CounterDisplayName>\Process(EXCEL)\Private Bytes</CounterDisplayName>
+		<CounterDisplayName>\Process(EXCEL)\IO Data Bytes/sec</CounterDisplayName>
+		<CounterDisplayName>\Process(POWERPNT)\% Processor Time</CounterDisplayName>
+		<CounterDisplayName>\Process(POWERPNT)\Private Bytes</CounterDisplayName>
+		<CounterDisplayName>\Process(POWERPNT)\IO Data Bytes/sec</CounterDisplayName>
+	</PerformanceCounterDataCollector>
+	<DataManager>
+		<Enabled>0</Enabled>
+		<CheckBeforeRunning>0</CheckBeforeRunning>
+		<MinFreeDisk>0</MinFreeDisk>
+		<MaxSize>0</MaxSize>
+		<MaxFolderCount>0</MaxFolderCount>
+		<ResourcePolicy>0</ResourcePolicy>
+		<ReportFileName>report.html</ReportFileName>
+		<RuleTargetFileName>report.xml</RuleTargetFileName>
+		<EventsFileName>
+		</EventsFileName>
+	</DataManager>
+</DataCollectorSet>
+
+"@
+
+$collectorSetXml | Out-File -FilePath "C:\jltools\JL-Process-Adobe-HardwareAnalysis.xml"
+start-sleep 5
+# Import the data collector set from the JL-Process-HardwareAnalysis.xml file and save it as name JL-Process-HW-Stats2
+$logmanCommand = "logman import -n JL-Process-HW-Stats4 -xml C:\jltools\JL-Process-Adobe-HardwareAnalysis.xml"
+Invoke-Expression $logmanCommand
+
+# Start the data collection process using the JL-Process-HW-Stats2 data collector set
+$logmanCommand = "logman start JL-Process-HW-Stats4"
+Invoke-Expression $logmanCommand
+
+# Export the data to a CSV locally at C:\jltools\
+$logmanExport = "relog DataCollector02.blg -f CSV -o C:\jltools\DataCollector02.csv"
+Invoke-Expression $logmanExport
